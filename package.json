@@ -1,0 +1,23 @@
+{
+  "name": "find-lawer",
+  "version": "0.0.1",
+  "description": "find extend lawer",
+  "main": "index.js",
+  "author": "zcs",
+  "repository": {
+    "type": "git"
+  },
+  "license": "ISC",
+  "scripts": {
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.15",
+    "better-fs": "^11.0.4",
+    "prettier": "^1.19.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "better-request": "^3.0.1"
+  }
+}
