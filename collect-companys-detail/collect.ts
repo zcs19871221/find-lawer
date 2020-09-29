@@ -23,7 +23,7 @@ const filterCase = async ({
   const parser = new Parser([
     new PublishTimeParser(),
     new NumberParser([2019, 2020], '京'),
-    new NameParser(),
+    new NameParser(['继承', '遗嘱']),
     new DetailParser(getLawerTasks, id, cookie),
     new EndParser(cases),
   ]);

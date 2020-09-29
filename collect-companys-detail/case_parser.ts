@@ -91,13 +91,17 @@ class NumberParser implements Parser {
 }
 
 class NameParser implements Parser {
+  private keywords: string[];
+  constructor(keywords: string[]) {
+    this.keywords = keywords;
+  }
   isMatch(parser: MainParser): boolean {
     return parser.canHandle() && parser.getOffset() === 3;
   }
 
   handle(td: string, parser: MainParser) {
     const name = parser.removeTag(td);
-    if (!name.includes('继承') && !name.includes('遗嘱')) {
+    if (this.keywords.every(keyword => !name.includes(keyword))) {
       parser.isRecord = false;
       return;
     }
