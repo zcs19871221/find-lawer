@@ -1,5 +1,5 @@
 import { read, LawCompanyInfo } from '../collect-companys';
-import filterByCase from './filter-by-case';
+import filterByCase from './collect';
 import { get } from '../cookie';
 
 const extra: LawCompanyInfo = {

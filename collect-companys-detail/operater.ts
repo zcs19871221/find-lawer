@@ -5,8 +5,8 @@ interface Case {
   time: string;
   number: string;
   name: string;
-  type: string;
   detailLink: string;
+  lawer: string;
 }
 interface FindedInfo {
   name: string;
@@ -18,7 +18,7 @@ interface FindedInfo {
 interface FinedLawCompany {
   [id: string]: FindedInfo;
 }
-const locate = path.join(process.cwd(), './case.json');
+const locate = path.join(process.cwd(), './detail.json');
 function read(): FinedLawCompany {
   try {
     if (isExistSync(locate)) {
