@@ -1,21 +1,17 @@
-import { read, LawCompanyInfo } from '../collect-companys';
+import { read as readList } from '../collect-companys';
 import filterByCase from './collect';
+import { read as readDetail } from './operater';
 import { get } from '../cookie';
 
-const extra: LawCompanyInfo = {
-  '3077532003': '北京市汉卓律师事务所',
-};
 (async function runFilter() {
   try {
-    let infos;
-    if (extra) {
-      infos = Object.entries(extra);
-    } else {
-      infos = Object.entries(read());
-    }
+    const infos = Object.entries(readList());
+    const details = readDetail();
     const cookie = get();
     while (infos.length > 0) {
-      const batched = infos.splice(0, 20);
+      const batched = infos
+        .splice(0, 5)
+        .filter(each => details[each[0]] === undefined);
       await Promise.all(
         batched.map(each =>
           filterByCase({ id: each[0], name: each[1], cookie }),

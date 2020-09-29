@@ -8,18 +8,17 @@ interface Case {
   detailLink: string;
   lawer: string;
 }
-interface FindedInfo {
+interface Detail {
   name: string;
   url: string;
   cases: Case[];
-  lawers?: any;
 }
 
-interface FinedLawCompany {
-  [id: string]: FindedInfo;
+interface Details {
+  [id: string]: Detail;
 }
 const locate = path.join(process.cwd(), './detail.json');
-function read(): FinedLawCompany {
+function read(): Details {
   try {
     if (isExistSync(locate)) {
       return JSON.parse(readFileSync(locate, 'utf-8'));
@@ -30,7 +29,7 @@ function read(): FinedLawCompany {
   }
 }
 
-function write(lawInfo: FinedLawCompany) {
+function write(lawInfo: Details) {
   const existInfo = read();
   writeFileSync(locate, JSON.stringify({ ...existInfo, ...lawInfo }, null, 2));
 }
@@ -40,4 +39,4 @@ function writeSorted(lawInfo: any) {
     JSON.stringify(lawInfo, null, 2),
   );
 }
-export { write, Case, read, FinedLawCompany, writeSorted };
+export { write, Case, read, Details, writeSorted };
