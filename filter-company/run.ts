@@ -1,10 +1,18 @@
-import { read } from '../collect-companys';
+import { read, LawCompanyInfo } from '../collect-companys';
 import filterByCase from './filter-by-case';
 import { get } from '../cookie';
 
+const extra: LawCompanyInfo = {
+  '3077532003': '北京市汉卓律师事务所',
+};
 (async function runFilter() {
   try {
-    const infos = Object.entries(read());
+    let infos;
+    if (extra) {
+      infos = Object.entries(extra);
+    } else {
+      infos = Object.entries(read());
+    }
     const cookie = get();
     while (infos.length > 0) {
       const batched = infos.splice(0, 20);
