@@ -12,18 +12,24 @@ const filterCase = async ({
   id,
   name,
   cookie,
+  year,
+  locate,
+  keywords,
 }: {
   id: string;
   name: string;
   cookie: string;
+  year: number[];
+  locate: string;
+  keywords: string[];
 }) => {
   let pn = 1;
   const cases: Case[] = [];
   const getLawerTasks: Promise<any>[] = [];
   const parser = new Parser([
     new PublishTimeParser(),
-    new NumberParser([2019, 2020], '京'),
-    new NameParser(['继承', '遗嘱']),
+    new NumberParser(year, locate),
+    new NameParser(keywords),
     new DetailParser(getLawerTasks, id, cookie),
     new EndParser(cases),
   ]);
