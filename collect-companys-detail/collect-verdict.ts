@@ -20,6 +20,17 @@ const findCourt = (res: string, detailLink: string) => {
   console.error('没找到法院名称:' + detailLink);
   return '';
 };
+const findSpecail = (res: string) => {
+  const matched = res.match(
+    /共立一份|共同遗嘱|共同立下|鉴定|遗嘱不符合|自书遗嘱|代书遗嘱/,
+  );
+  if (matched) {
+    console.log('specail');
+    return true;
+  }
+  return false;
+};
+
 export default async function collectVerdict({
   detailLink,
   cookie,
@@ -28,7 +39,11 @@ export default async function collectVerdict({
   detailLink: string;
   cookie: string;
   id: string;
-}): Promise<{ lawer: string; court: string }> {
+}): Promise<{
+  lawer: string;
+  court: string;
+  isSpecail: boolean;
+}> {
   return Request.fetch(
     {
       url: detailLink,
@@ -41,9 +56,11 @@ export default async function collectVerdict({
     null,
   )
     .then(res => {
+      const court = findCourt(res, detailLink);
       return {
         lawer: findLawer(res, detailLink, id),
-        court: findCourt(res, detailLink),
+        court,
+        isSpecail: court.includes('海淀区') ? findSpecail(res) : false,
       };
     })
     .catch(e => {
@@ -51,6 +68,7 @@ export default async function collectVerdict({
       return {
         lawer: '',
         court: '',
+        isSpecail: false,
       };
     });
 }

@@ -8,6 +8,7 @@ interface Case {
   detailLink: string;
   lawer: string;
   court: string;
+  isSpecail: boolean;
 }
 interface Detail {
   name: string;

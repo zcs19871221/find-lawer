@@ -28,6 +28,7 @@ class MainParser {
       detailLink: '',
       lawer: '',
       court: '',
+      isSpecail: false,
     };
   }
 
@@ -136,6 +137,7 @@ class DetailParser implements Parser {
             verdictInfo => {
               caseInfo.lawer = verdictInfo.lawer;
               caseInfo.court = verdictInfo.court;
+              caseInfo.isSpecail = verdictInfo.isSpecail;
             },
           ),
         );
