@@ -1,5 +1,5 @@
 import { Case } from './operater';
-import findLawer from './find-lawer';
+import collecVerdict from './collect-verdict';
 
 class MainParser {
   isNext: boolean = true;
@@ -27,6 +27,7 @@ class MainParser {
       name: '',
       detailLink: '',
       lawer: '',
+      court: '',
     };
   }
 
@@ -101,11 +102,11 @@ class NameParser implements Parser {
 
   handle(td: string, parser: MainParser) {
     const name = parser.removeTag(td);
-    if (this.keywords.every(keyword => !name.includes(keyword))) {
-      parser.isRecord = false;
+    if (this.keywords.some(keyword => name.includes(keyword))) {
+      parser.caseInfo.name = name;
       return;
     }
-    parser.caseInfo.name = name;
+    parser.isRecord = false;
   }
 }
 
@@ -131,8 +132,11 @@ class DetailParser implements Parser {
       caseInfo.detailLink = detailLink;
       if (detailLink) {
         this.tasks.push(
-          findLawer({ detailLink, id: this.id, cookie: this.cookie }).then(
-            lawer => (caseInfo.lawer = lawer),
+          collecVerdict({ detailLink, id: this.id, cookie: this.cookie }).then(
+            verdictInfo => {
+              caseInfo.lawer = verdictInfo.lawer;
+              caseInfo.court = verdictInfo.court;
+            },
           ),
         );
       }

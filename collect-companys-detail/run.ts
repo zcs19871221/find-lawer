@@ -8,11 +8,13 @@ import { get } from '../cookie';
   locate,
   keywords,
   batch,
+  overwrite,
 }: {
   year: number[];
   batch: number;
   locate: string;
   keywords: string[];
+  overwrite: boolean;
 }) {
   try {
     const infos = Object.entries(readList());
@@ -21,7 +23,7 @@ import { get } from '../cookie';
     while (infos.length > 0) {
       const batched = infos
         .splice(0, batch)
-        .filter(each => details[each[0]] === undefined);
+        .filter(each => overwrite || details[each[0]] === undefined);
       await Promise.all(
         batched.map(each =>
           filterByCase({
@@ -43,5 +45,6 @@ import { get } from '../cookie';
   year: [2020, 2019, 2018],
   locate: '京',
   keywords: ['继承', '遗嘱', '遗产'],
-  batch: 10,
+  batch: 5,
+  overwrite: true,
 });

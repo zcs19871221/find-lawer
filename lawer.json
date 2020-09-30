@@ -490,6 +490,23 @@
     }
   ],
   [
+    "_1",
+    {
+      "name": "北京即明律师事务所",
+      "url": "https://www.tianyancha.com/company/3077496522",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": [
+        {
+          "time": "2018",
+          "number": "（2018）京0105民初97470号",
+          "name": "张某1与张某3等遗嘱继承纠纷一审民事判决书",
+          "detailLink": "https://www.tianyancha.com/lawsuit/7db95bd768be459291e35b22310434ec"
+        }
+      ]
+    }
+  ],
+  [
     "任家玉",
     {
       "name": "北京市新达律师事务所",
@@ -948,6 +965,16 @@
     {
       "name": "北京市汇融律师事务所",
       "url": "https://www.tianyancha.com/company/3077531343",
+      "companyCaseNum": 2,
+      "selfCaseNum": 2,
+      "cases": []
+    }
+  ],
+  [
+    "_1_2_3_4_5_6_7",
+    {
+      "name": "北京市邦成律师事务所",
+      "url": "https://www.tianyancha.com/company/3077534160",
       "companyCaseNum": 2,
       "selfCaseNum": 2,
       "cases": []
@@ -1784,6 +1811,16 @@
     }
   ],
   [
+    "",
+    {
+      "name": "北京升维律师事务所",
+      "url": "https://www.tianyancha.com/company/3077496136",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": []
+    }
+  ],
+  [
     "张宁",
     {
       "name": "北京高沃律师事务所",
@@ -1794,10 +1831,30 @@
     }
   ],
   [
+    "_1_2",
+    {
+      "name": "北京百恩律师事务所",
+      "url": "https://www.tianyancha.com/company/3077497301",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": []
+    }
+  ],
+  [
     "王明文",
     {
       "name": "北京双鹏律师事务所",
       "url": "https://www.tianyancha.com/company/3077497776",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": []
+    }
+  ],
+  [
+    "_1_2_3",
+    {
+      "name": "北京京宁律师事务所",
+      "url": "https://www.tianyancha.com/company/3077498395",
       "companyCaseNum": 1,
       "selfCaseNum": 1,
       "cases": []
@@ -1834,10 +1891,40 @@
     }
   ],
   [
+    "_1_2_3_4",
+    {
+      "name": "北京至瑾律师事务所",
+      "url": "https://www.tianyancha.com/company/3077502693",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": []
+    }
+  ],
+  [
+    "_1_2_3_4_5",
+    {
+      "name": "北京万典律师事务所",
+      "url": "https://www.tianyancha.com/company/3077504826",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": []
+    }
+  ],
+  [
     "周润丽",
     {
       "name": "北京人富律师事务所",
       "url": "https://www.tianyancha.com/company/3077507624",
+      "companyCaseNum": 1,
+      "selfCaseNum": 1,
+      "cases": []
+    }
+  ],
+  [
+    "_1_2_3_4_5_6",
+    {
+      "name": "北京义贤律师事务所",
+      "url": "https://www.tianyancha.com/company/3077528987",
       "companyCaseNum": 1,
       "selfCaseNum": 1,
       "cases": []

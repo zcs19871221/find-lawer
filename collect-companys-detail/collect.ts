@@ -49,6 +49,18 @@ const filterCase = async ({
           cookie,
         },
         method: 'GET',
+        responseHandlers: [
+          'status',
+          'decode',
+          res => {
+            if (!res) {
+              throw new Error(
+                `https://www.tianyancha.com/pagination/caseList.xhtml?id=${id}返回空`,
+              );
+            }
+            return res;
+          },
+        ],
       },
       null,
     );
@@ -57,6 +69,7 @@ const filterCase = async ({
       !/<td>([\s\S]*?)<\/td>/.test(response)
     ) {
       console.error(id + ': ' + name + '获取数据错误');
+      parser.isNext = false;
       return;
     }
     response.replace(/<td.*?>([\s\S]*?)<\/td>/g, (_match: any, td: string) => {

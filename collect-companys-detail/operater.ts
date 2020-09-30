@@ -7,6 +7,7 @@ interface Case {
   name: string;
   detailLink: string;
   lawer: string;
+  court: string;
 }
 interface Detail {
   name: string;
