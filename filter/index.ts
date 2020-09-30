@@ -7,12 +7,13 @@ interface Lawer {
   url: string;
   selfCaseNum: number;
   companyCaseNum: number;
+  haidianCourtNum: number;
   cases: Omit<Case, 'lawer'>[];
 }
 interface Lawers {
   [name: string]: Lawer;
 }
-const filter = async (keyword: string = '') => {
+const filter = async (keywords: string[] = [], years: string[] = []) => {
   const detail = Object.values(read());
   let allLawers: Lawers = {};
   detail.forEach(e => {
@@ -33,12 +34,20 @@ const filter = async (keyword: string = '') => {
           name: e.name,
           url: e.url,
           companyCaseNum,
+          haidianCourtNum: 0,
           selfCaseNum: 0,
           cases: [],
         };
       }
       lawers[lawer].selfCaseNum += 1;
-      if (ee.name.includes(keyword)) {
+      if (ee.court.includes('北京市海淀区人民法院')) {
+        lawers[lawer].haidianCourtNum += 1;
+      }
+      if (
+        (keywords.length === 0 ||
+          keywords.some(keyword => ee.name.includes(keyword))) &&
+        (years.length === 0 || years.some(year => ee.time === year))
+      ) {
         lawers[lawer].cases.push(ee);
       }
     });
@@ -48,6 +57,9 @@ const filter = async (keyword: string = '') => {
   entries.sort((a, b) => {
     if (b[1].cases.length !== a[1].cases.length) {
       return b[1].cases.length - a[1].cases.length;
+    }
+    if (b[1].haidianCourtNum !== a[1].haidianCourtNum) {
+      return b[1].haidianCourtNum - a[1].haidianCourtNum;
     }
     if (b[1].selfCaseNum !== a[1].selfCaseNum) {
       return b[1].selfCaseNum - a[1].selfCaseNum;
@@ -59,4 +71,4 @@ const filter = async (keyword: string = '') => {
     JSON.stringify(entries, null, 2),
   );
 };
-filter('遗嘱');
+filter(['遗嘱']);
